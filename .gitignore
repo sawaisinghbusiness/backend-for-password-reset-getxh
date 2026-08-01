@@ -1,0 +1,23 @@
+# Dependencies
+node_modules/
+
+# Environment variables & secrets
+.env
+*.pem
+firebase-service-account.json
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# System & IDE
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# Coverage / Jest
+coverage/

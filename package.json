@@ -1,0 +1,38 @@
+{
+  "name": "getxh-password-reset-backend",
+  "version": "1.0.0",
+  "description": "Secure custom Forgot Password backend service for GETXH using Firebase Admin SDK, Firestore, and Brevo API",
+  "main": "src/server.js",
+  "type": "commonjs",
+  "scripts": {
+    "start": "node src/server.js",
+    "dev": "nodemon src/server.js",
+    "test": "jest --runInBand --detectOpenHandles"
+  },
+  "keywords": [
+    "firebase",
+    "brevo",
+    "password-reset",
+    "otp",
+    "security",
+    "express"
+  ],
+  "author": "GETXH Team",
+  "license": "ISC",
+  "dependencies": {
+    "@getbrevo/brevo": "^2.0.0",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "express-rate-limit": "^7.3.1",
+    "express-validator": "^7.1.0",
+    "firebase-admin": "^12.2.0",
+    "helmet": "^7.1.0",
+    "winston": "^3.13.0"
+  },
+  "devDependencies": {
+    "jest": "^29.7.0",
+    "nodemon": "^3.1.4",
+    "supertest": "^7.0.0"
+  }
+}
