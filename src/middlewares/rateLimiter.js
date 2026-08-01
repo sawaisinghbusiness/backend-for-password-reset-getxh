@@ -22,33 +22,33 @@ const forgotPasswordLimiter = rateLimit({
   max: env.FORGOT_PASSWORD_LIMIT_MAX,
   standardHeaders: true,
   legacyHeaders: false,
-  message: 'Too many password reset requests from this IP. Please try again after an hour.',
+  message: 'Too many password reset requests from this IP. Please try again after 15 minutes.',
   handler: handleRateLimitExceeded,
   skip: () => process.env.NODE_ENV === 'test'
 });
 
 /**
- * Rate limiter for POST /api/verify-reset-otp (10 requests / hour / IP)
+ * Rate limiter for POST /api/verify-reset-otp (50 requests / 15 min / IP)
  */
 const verifyOtpLimiter = rateLimit({
   windowMs: env.RATE_LIMIT_WINDOW_MS,
   max: env.VERIFY_OTP_LIMIT_MAX,
   standardHeaders: true,
   legacyHeaders: false,
-  message: 'Too many verification attempts from this IP. Please try again after an hour.',
+  message: 'Too many verification attempts from this IP. Please try again after 15 minutes.',
   handler: handleRateLimitExceeded,
   skip: () => process.env.NODE_ENV === 'test'
 });
 
 /**
- * Rate limiter for POST /api/reset-password (5 requests / hour / IP)
+ * Rate limiter for POST /api/reset-password (50 requests / 15 min / IP)
  */
 const resetPasswordLimiter = rateLimit({
   windowMs: env.RATE_LIMIT_WINDOW_MS,
   max: env.RESET_PASSWORD_LIMIT_MAX,
   standardHeaders: true,
   legacyHeaders: false,
-  message: 'Too many password reset attempts from this IP. Please try again after an hour.',
+  message: 'Too many password reset attempts from this IP. Please try again after 15 minutes.',
   handler: handleRateLimitExceeded,
   skip: () => process.env.NODE_ENV === 'test'
 });

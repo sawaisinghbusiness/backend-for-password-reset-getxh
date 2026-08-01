@@ -38,10 +38,10 @@ function validateEnv() {
     BREVO_API_KEY: process.env.BREVO_API_KEY || 'MOCK_BREVO_KEY',
     BREVO_SENDER_EMAIL: process.env.BREVO_SENDER_EMAIL || 'agency@getxh.in',
     BREVO_SENDER_NAME: process.env.BREVO_SENDER_NAME || 'GETXH Security',
-    FORGOT_PASSWORD_LIMIT_MAX: parseInt(process.env.FORGOT_PASSWORD_LIMIT_MAX || '5', 10),
-    VERIFY_OTP_LIMIT_MAX: parseInt(process.env.VERIFY_OTP_LIMIT_MAX || '10', 10),
-    RESET_PASSWORD_LIMIT_MAX: parseInt(process.env.RESET_PASSWORD_LIMIT_MAX || '5', 10),
-    RATE_LIMIT_WINDOW_MS: parseInt(process.env.RATE_LIMIT_WINDOW_MS || '3600000', 10) // 1 hour
+    FORGOT_PASSWORD_LIMIT_MAX: parseInt(process.env.FORGOT_PASSWORD_LIMIT_MAX || '30', 10),
+    VERIFY_OTP_LIMIT_MAX: parseInt(process.env.VERIFY_OTP_LIMIT_MAX || '50', 10),
+    RESET_PASSWORD_LIMIT_MAX: parseInt(process.env.RESET_PASSWORD_LIMIT_MAX || '50', 10),
+    RATE_LIMIT_WINDOW_MS: parseInt(process.env.RATE_LIMIT_WINDOW_MS || '900000', 10) // 15 minutes
   };
 }
 
