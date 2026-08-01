@@ -51,6 +51,20 @@ app.get('/health', (req, res) => {
 // Authentication API Routes
 app.use('/api', authRoutes);
 
+// Root route aliases to match GETXH frontend contract directly
+app.post('/reset-password', (req, res, next) => {
+  req.url = '/reset-password';
+  authRoutes(req, res, next);
+});
+app.post('/send-otp', (req, res, next) => {
+  req.url = '/forgot-password';
+  authRoutes(req, res, next);
+});
+app.post('/verify-otp', (req, res, next) => {
+  req.url = '/verify-reset-otp';
+  authRoutes(req, res, next);
+});
+
 // 404 Not Found Handler
 app.use(notFoundHandler);
 
