@@ -6,11 +6,34 @@ const { notFoundHandler, globalErrorHandler } = require('./middlewares/errorHand
 
 const app = express();
 
+// Enable trust proxy for reverse proxies (Nginx, Railway, Vercel, Cloudflare) for accurate IP rate limiting & HTTPS
+app.set('trust proxy', 1);
+
 // Security Headers via Helmet
 app.use(helmet());
 
-// CORS configuration
-app.use(cors());
+// Allowed origins for CORS (GETXH production domains + CLIENT_URL env + localhost dev)
+const allowedOrigins = [
+  'https://getxh.in',
+  'https://www.getxh.in',
+  process.env.CLIENT_URL
+].filter(Boolean);
+
+const corsOptions = {
+  origin: (origin, callback) => {
+    // Allow non-browser requests or allowed domains
+    if (!origin || allowedOrigins.includes(origin) || process.env.NODE_ENV !== 'production') {
+      callback(null, true);
+    } else {
+      callback(new Error(`CORS policy violation: origin ${origin} is not allowed.`));
+    }
+  },
+  credentials: true,
+  methods: ['GET', 'POST', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization']
+};
+
+app.use(cors(corsOptions));
 
 // Body Parsers
 app.use(express.json());
